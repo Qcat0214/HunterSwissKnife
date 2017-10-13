@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: HunterSwissKnife
+## Notes: Set of useful stuff for hunters.
+## Version: 1.0
+
+HunterSwissKnife.xml
