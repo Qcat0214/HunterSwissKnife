@@ -6,6 +6,7 @@
     <Script file="HunterSwissKnife_Config.lua" />
     <Script file="HunterSwissKnife_Core.lua" />
     <Script file="HunterSwissKnife_EventHandlers.lua" />
+    <Script file="HunterSwissKnife_ActionHandlers.lua" />
     
     <Script file="HunterSwissKnife_Macro.lua"/>
 

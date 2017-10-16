@@ -8,6 +8,7 @@ SLASH_HUNTERSWISSKNIFE2 = "/hunterswissknife";
 -- Hunter auras
 
 AURA_HAWK = "Spell_Nature_RavenForm";
+AURA_MONKEY = "Ability_Hunter_AspectOfTheMonkey";
 AURA_CHEETAH = "JungleTiger";
 AURA_PACK = "WhiteTiger";
 
