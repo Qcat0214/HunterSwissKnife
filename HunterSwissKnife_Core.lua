@@ -9,25 +9,25 @@ function HunterSwissKnife_Core_IsAuraActive(auraName, unit, trackInBuffs, trackI
     if not (trackInBuffs) then trackInBuffs = true end
     if not (trackInDebuffs) then trackInDebuffs = true end
 
-    local it= 1;
+    local it= 0;
     while (trackInBuffs) do
-        local itBuff = UnitBuff(unit, it);
-        if not (itBuff) then break end
+        local buffTexture = UnitBuff(unit, it+1);
+        if not (buffTexture) then break end
 
-        if (string.find(itBuff, auraName)) then
-            return it-1;
+        if (string.find(buffTexture, auraName)) then
+            return it;
         end
 
         it = it + 1;
     end
 
-    it= 1;
+    it= 0;
     while (trackInDebuffs) do
-        local itDebuff = UnitDebuff(unit, it);
-        if not (itDebuff) then break end
+        local debuffTexture = UnitDebuff(unit, it+1);
+        if not (debuffTexture) then break end
 
-        if (string.find(itDebuff, auraName)) then
-            return it-1;
+        if (string.find(debuffTexture, auraName)) then
+            return it;
         end
 
         it = it + 1;
