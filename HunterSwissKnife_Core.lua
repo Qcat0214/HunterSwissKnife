@@ -72,3 +72,13 @@ function HunterSwissKnife_Core_CheckDaze(unit)
         end
     end
 end
+
+
+function HunterSwissKnife_Core_HasPet()
+    local hasUI, isHunterPet = HasPetUI();
+    if hasUI and isHunterPet then
+        return true
+    else
+        return false
+    end
+end

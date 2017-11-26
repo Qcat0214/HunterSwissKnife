@@ -25,7 +25,7 @@ end
 HunterSwissKnife_ActionHandlers["Freezing Trap"] = function()
     CastSpellByName("Freezing Trap");
 
-    if HunterSwissKnife_Macro_HasPet() and HunterSwissKnife_Core_IsAuraActive(AURA_FREEZINGTRAP, "pettarget", false, true) then
+    if HunterSwissKnife_Core_HasPet() and HunterSwissKnife_Core_IsAuraActive(AURA_FREEZINGTRAP, "pettarget", false, true) then
         PetFollow();
     end
 end
