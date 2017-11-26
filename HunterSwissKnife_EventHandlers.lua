@@ -2,17 +2,15 @@ HunterSwissKnife_EventHandlers = {}
 
 
 HunterSwissKnife_EventHandlers["UNIT_AURA"] = function()
-    -- HunterSwissKnife_Core_PrintToChat("UNIT AURA TRIGGER");
+    if arg1 ~= "player" then 
+        HunterSwissKnife_Core_CheckDaze(arg1);
+    end
+end
 
-    if not ((IsMounted) and UnitIsMounted("player")) then
-        if arg1 == "player" and HunterSwissKnife_Core_IsAuraActive(AURA_DAZED, arg1, false, true) then
-            HunterSwissKnife_Core_CancelAura(AURA_PACK);
-            HunterSwissKnife_Core_CancelAura(AURA_CHEETAH);
-        elseif (arg1 == (string.find(arg1,"party%d")) or arg1 == (string.find(arg1,"pet"))) and HunterSwissKnife_Core_IsAuraActive(AURA_DAZED, arg1, false, true) then
-            -- TODO: replace with UnitPlayerOrPetInParty("unit")
-            -- TODO: replace with UnitPlayerOrPetInRaid("unit")
-            HunterSwissKnife_Core_CancelAura(AURA_PACK);
-        end
+
+HunterSwissKnife_EventHandlers["COMBAT_TEXT_UPDATE"] = function()
+    if arg1 == "AURA_START_HARMFUL" then 
+        HunterSwissKnife_Core_CheckDaze("player");
     end
 end
 

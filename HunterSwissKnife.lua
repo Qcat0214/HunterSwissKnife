@@ -10,6 +10,7 @@ function HunterSwissKnife_OnLoad()
     SlashCmdList["HUNTERSWISSKNIFE"] = HunterSwissKnife_OnCmd;
 
     this:RegisterEvent( "UNIT_AURA" );
+    this:RegisterEvent("COMBAT_TEXT_UPDATE");
     -- this:RegisterEvent( "PLAYER_AURAS_CHANGED" );
 
     HunterSwissKnife_Core_PrintToChat("|cFFFF0000"..HUNTERSWISSKNIFE_TITLE.." "..HUNTERSWISSKNIFE_VESRION.." is loaded");

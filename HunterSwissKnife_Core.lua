@@ -56,3 +56,19 @@ function HunterSwissKnife_Core_CancelAura(auraName)
         CancelPlayerBuff(auraIndex);
     end
 end
+
+
+function HunterSwissKnife_Core_CheckDaze(unit)
+    if not ((IsMounted) and UnitIsMounted("player")) then
+        if HunterSwissKnife_Core_IsAuraActive(AURA_DAZED, unit, false, true) then
+            if unit == "player" then
+                HunterSwissKnife_Core_CancelAura(AURA_PACK);
+                HunterSwissKnife_Core_CancelAura(AURA_CHEETAH);
+            elseif (unit == (string.find(unit,"party%d")) or unit == (string.find(unit,"pet"))) then
+                -- TODO: replace with UnitPlayerOrPetInParty("unit")
+                -- TODO: replace with UnitPlayerOrPetInRaid("unit")
+                HunterSwissKnife_Core_CancelAura(AURA_PACK);
+            end
+        end
+    end
+end
