@@ -1,19 +1,16 @@
+-- Addon Config
+
 HUNTERSWISSKNIFE_TITLE = "HunterSwissKnife";
 HUNTERSWISSKNIFE_VESRION = "v1.0";
 
 SLASH_HUNTERSWISSKNIFE1 = "/hsk";
 SLASH_HUNTERSWISSKNIFE2 = "/hunterswissknife";
 
-
--- Hunter auras
-
-AURA_HAWK = "Spell_Nature_RavenForm";
-AURA_MONKEY = "Ability_Hunter_AspectOfTheMonkey";
-AURA_CHEETAH = "JungleTiger";
-AURA_PACK = "WhiteTiger";
-
-
--- Debuffs
-
-AURA_DAZED = "Spell_Frost_Stun";
-AURA_FREEZINGTRAP = "Spell_Frost_ChainsOflce";
+RED_C = "|cFFFF0000"
+GRE_C = "|cFF00FF00"
+BLU_C = "|cFF0000FF"
+YEL_C = "|cFFFFFF00"
+CYA_C = "|cFF00FFFF"
+ORA_C = "|cFFFF8C00"
+PIN_C = "|cFFFF69B4"
+DEF_C = "|r"
