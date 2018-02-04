@@ -1,9 +1,9 @@
-function HunterSwissKnife_Core_PrintToChat(text)
+function HunterSwissKnifeCore_PrintToChat(text)
     DEFAULT_CHAT_FRAME:AddMessage(text);
 end
 
 
-function HunterSwissKnife_Core_IsAuraActive(auraName, unit, trackInBuffs, trackInDebuffs)
+function HunterSwissKnifeCore_IsAuraActive(auraName, unit, trackInBuffs, trackInDebuffs)
     if not (auraName) then return end
     if not (unit) then unit = "player" end
     if not (trackInBuffs) then trackInBuffs = true end
@@ -50,17 +50,17 @@ function HunterSwissKnife_Core_IsAuraActive(auraName, unit, trackInBuffs, trackI
 end
 
 
-function HunterSwissKnife_Core_CancelAura(auraName)
-    local auraIndex = HunterSwissKnife_Core_IsAuraActive(auraName, "player", true, false);
+function HunterSwissKnifeCore_CancelAura(auraName)
+    local auraIndex = HunterSwissKnifeCore_IsAuraActive(auraName, "player", true, false);
     if (auraIndex) then
         CancelPlayerBuff(auraIndex);
     end
 end
 
 
-function HunterSwissKnife_Core_isDazed(unit)
+function HunterSwissKnifeCore_isDazed(unit)
     if not ((IsMounted) and UnitIsMounted("player")) then
-        if HunterSwissKnife_Core_IsAuraActive(AURA_DAZED, unit, false, true) then
+        if HunterSwissKnifeCore_IsAuraActive(AURA_DAZED, unit, false, true) then
             return true;
         end
     end
@@ -69,7 +69,7 @@ function HunterSwissKnife_Core_isDazed(unit)
 end
 
 
-function HunterSwissKnife_Core_HasPet()
+function HunterSwissKnifeCore_HasPet()
     local hasUI, isHunterPet = HasPetUI();
     if hasUI and isHunterPet then
         return true;
@@ -79,12 +79,12 @@ function HunterSwissKnife_Core_HasPet()
 end
 
 
-function HunterSwissKnife_Core_GetSpellNameById(spellId)
+function HunterSwissKnifeCore_GetSpellNameById(spellId)
     return GetSpellName(spellId,"BOOKTYPE_SPELL");
 end
 
 
-function HunterSwissKnife_Core_GetSpellIdByName(spellName, spellPage)
+function HunterSwissKnifeCore_GetSpellIdByName(spellName, spellPage)
     local whatPage = spellPage;
     if not (spellPage) then whatPage = GetNumSpellTabs() end
 

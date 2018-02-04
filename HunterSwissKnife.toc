@@ -3,5 +3,6 @@
 ## Notes: Set of useful stuff for hunters.
 ## Version: 1.0
 ## Author: Sonitus V.
+## SavedVariables: permanentAspects, antiDaze, aimedTracker, autoShotTracker, autoShotOverride, callPetOverrride
 
 HunterSwissKnife.xml

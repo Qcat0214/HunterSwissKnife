@@ -24,7 +24,7 @@ local aimedShotStart = false;
 local berserkValue   = false;
 
 
-local function HunterSwissKnife_AutoShotTracker_CreateBar()
+local function CreateBar()
 	Table["posX"]   = Table["posX"]   * GetScreenWidth()  / 1000;
 	Table["posY"]   = Table["posY"]   * GetScreenHeight() / 1000;
 	Table["Width"]  = Table["Width"]  * GetScreenWidth()  / 1000;
@@ -40,7 +40,7 @@ local function HunterSwissKnife_AutoShotTracker_CreateBar()
 	local Bar = Frame:CreateTexture(nil, "OVERLAY");
 	Bar:SetPoint("CENTER", Frame, "CENTER");
 	Bar:SetHeight(Table["Height"]);
-	Bar:SetTexture("Interface\\AddOns\\HunterSwissKnife\\Textures\\Bar.tga");
+	Bar:SetTexture("Interface\\AddOns\\HunterSwissKnife\\Modules\\AutoShotTracker\\Textures\\Bar.tga");
 
 	local Background = Frame:CreateTexture(nil, "ARTWORK");
 	Background:SetAllPoints(Frame);
@@ -63,8 +63,8 @@ local function HunterSwissKnife_AutoShotTracker_CreateBar()
 end
 
 
-local function HunterSwissKnife_AutoShotTracker_CheckGCD()
-    local spellId = HunterSwissKnife_Core_GetSpellIdByName("Serpent Sting");
+local function CheckGCD()
+    local spellId = HunterSwissKnifeCore_GetSpellIdByName("Serpent Sting");
 
     if (spellId) then
         local gCooldownStart, gCooldownTime = GetSpellCooldown(spellId,"BOOKTYPE_SPELL");
@@ -74,14 +74,14 @@ local function HunterSwissKnife_AutoShotTracker_CheckGCD()
 end
 
 
-local function HunterSwissKnife_AutoShotTracker_AimingStart()
+local function AimingStart()
 	AutoShotTrackerBar:SetVertexColor(1,1,0);
 	posX, posY = GetPlayerMapPosition("player");
 	aimingStart = GetTime();
 end
 
 
-local function HunterSwissKnife_AutoShotTracker_AimingUpdate()
+local function AimingUpdate()
     AutoShotTrackerFrame:SetAlpha(1);
 	
 	  local timePassed = GetTime() - aimingStart;
@@ -93,19 +93,19 @@ local function HunterSwissKnife_AutoShotTracker_AimingUpdate()
 end
 
 
-local function HunterSwissKnife_AutoShotTracker_AimingStop()
+local function AimingStop()
 	AutoShotTrackerFrame:SetAlpha(0);
 	reloadingStart = false;
-	HunterSwissKnife_AutoShotTracker_AimingStart();
+	AimingStart();
 end
 
 
-local function HunterSwissKnife_AutoShotTracker_GunStart()
-	HunterSwissKnife_AutoShotTracker_AimingStart();
+local function GunStart()
+	AimingStart();
 	shooting = true;
 end
 
-local function HunterSwissKnife_AutoShotTracker_GunStop()
+local function GunStop()
 	if (reloadingStart == false) then
 		AutoShotTrackerFrame:SetAlpha(0);
 	end
@@ -113,7 +113,7 @@ local function HunterSwissKnife_AutoShotTracker_GunStop()
 	shooting = false;
 end
 
-local function HunterSwissKnife_AutoShotTracker_GunReload()
+local function GunReload()
 	reloadingTime = UnitRangedDamage("player") - aimingTime;
 	AutoShotTrackerBar:SetVertexColor(1,0,0);
 	aimingStart = false;
@@ -121,7 +121,7 @@ local function HunterSwissKnife_AutoShotTracker_GunReload()
 end
 
 
-local function HunterSwissKnife_AutoShotTracker_AimedShotStart()
+local function AimedShotStart()
     aimedShotStart = GetTime();
     aimingStart = false;
 
@@ -166,7 +166,7 @@ local function HunterSwissKnife_AutoShotTracker_AimedShotStart()
     end
 end
 
-local function HunterSwissKnife_AutoShotTracker_CheckBerserk()
+local function CheckBerserk()
     for i = 1, 16 do
         if (UnitBuff("player",i) == "Interface\\Icons\\Racial_Troll_Berserk") then
             if (berserkValue == false) then
@@ -185,7 +185,7 @@ local function HunterSwissKnife_AutoShotTracker_CheckBerserk()
 end
 
 
-function HunterSwissKnife_AutoShotTracker_OnLoad(frame)
+function HunterSwissKnifeModule_AutoShotTracker_OnLoad(frame)
     frame:RegisterEvent("UNIT_AURA");
     frame:RegisterEvent("SPELLCAST_STOP");
     frame:RegisterEvent("CURRENT_SPELL_CAST_CHANGED");
@@ -193,20 +193,20 @@ function HunterSwissKnife_AutoShotTracker_OnLoad(frame)
     frame:RegisterEvent("STOP_AUTOREPEAT_SPELL");
     frame:RegisterEvent("ITEM_LOCK_CHANGED");
 
-    HunterSwissKnife_AutoShotTracker_CreateBar();
-    HunterSwissKnife_Core_PrintToChat(CYA_C.."AutoShotTracker Module |rLoaded");
+    CreateBar();
+    HunterSwissKnifeCore_PrintToChat(HSK_CYA.."AutoShotTracker Module |rLoaded");
 end
 
 
-function HunterSwissKnife_AutoShotTracker_OnUpdate()
+function HunterSwissKnifeModule_AutoShotTracker_OnUpdate()
     if (shooting == true) then
         if (aimingStart ~= false) then
             local cposX, cposY = GetPlayerMapPosition("player");
 
             if (cposX == posX and cposY == posY) then
-                HunterSwissKnife_AutoShotTracker_AimingUpdate();
+                AimingUpdate();
             else
-                HunterSwissKnife_AutoShotTracker_AimingStop();
+                AimingStop();
             end
         end
     end
@@ -217,7 +217,7 @@ function HunterSwissKnife_AutoShotTracker_OnUpdate()
 
         if (timePassed > reloadingTime) then
             if (shooting == true and aimedShotStart == false) then
-                HunterSwissKnife_AutoShotTracker_AimingStart();
+                AimingStart();
             else
                 AutoShotTrackerBar:SetWidth(0);
                 AutoShotTrackerFrame:SetAlpha(0);
@@ -229,69 +229,69 @@ function HunterSwissKnife_AutoShotTracker_OnUpdate()
 end
 
 
-function HunterSwissKnife_AutoShotTracker_OnCastSpell(spellId, spellTab)
+function HunterSwissKnifeModule_AutoShotTracker_OnCastSpell(spellId, spellTab)
     if (GetSpellName(spellId,"BOOKTYPE_SPELL") == "Aimed Shot") then
-        HunterSwissKnife_AutoShotTracker_AimedShotStart();
+        AimedShotStart();
     end
 end
 
 
-HunterSwissKnife_AutoShotTracker_OnCastSpellByName = {}
+HunterSwissKnifeModule_AutoShotTracker_OnCastSpellByName = {}
 
-HunterSwissKnife_AutoShotTracker_OnCastSpellByName["Aimed Shot"] = function(spellName)
-    HunterSwissKnife_AutoShotTracker_AimedShotStart();
+HunterSwissKnifeModule_AutoShotTracker_OnCastSpellByName["Aimed Shot"] = function(spellName)
+    AimedShotStart();
 end
 
 
-HunterSwissKnife_AutoShotTracker_OnAction = {}
+HunterSwissKnifeModule_AutoShotTracker_OnAction = {}
 
-HunterSwissKnife_AutoShotTracker_OnAction["Aimed Shot"] = function(slot, checkFlags, checkSelf)
-    HunterSwissKnife_AutoShotTracker_AimedShotStart();
+HunterSwissKnifeModule_AutoShotTracker_OnAction["Aimed Shot"] = function(slot, checkFlags, checkSelf)
+    AimedShotStart();
 end
 
 
-HunterSwissKnife_AutoShotTracker_OnEvent = {}
+HunterSwissKnifeModule_AutoShotTracker_OnEvent = {}
 
-HunterSwissKnife_AutoShotTracker_OnEvent["UNIT_AURA"] = function()
-    HunterSwissKnife_AutoShotTracker_CheckBerserk();
+HunterSwissKnifeModule_AutoShotTracker_OnEvent["UNIT_AURA"] = function()
+    CheckBerserk();
 end
 
-HunterSwissKnife_AutoShotTracker_OnEvent["SPELLCAST_STOP"] = function()
+HunterSwissKnifeModule_AutoShotTracker_OnEvent["SPELLCAST_STOP"] = function()
     if (aimedShotStart ~= false) then
         aimedShotStart = false;
     end
 
-    local gCooldownStart, gCooldownTime = HunterSwissKnife_AutoShotTracker_CheckGCD();
+    local gCooldownStart, gCooldownTime = CheckGCD();
     if (gCooldownTime == 1.5) then
         gCooldownStartOld = gCooldownStart;
     end
 end
 
-HunterSwissKnife_AutoShotTracker_OnEvent["CURRENT_SPELL_CAST_CHANGED"] = function()
+HunterSwissKnifeModule_AutoShotTracker_OnEvent["CURRENT_SPELL_CAST_CHANGED"] = function()
     if (reloadingStart == false and aimedShotStart == false) then
-        HunterSwissKnife_AutoShotTracker_AimingStop();
+        AimingStop();
     end
 end
 
-HunterSwissKnife_AutoShotTracker_OnEvent["START_AUTOREPEAT_SPELL"] = function()
-  HunterSwissKnife_AutoShotTracker_GunStart();
+HunterSwissKnifeModule_AutoShotTracker_OnEvent["START_AUTOREPEAT_SPELL"] = function()
+  GunStart();
 end
 
-HunterSwissKnife_AutoShotTracker_OnEvent["STOP_AUTOREPEAT_SPELL"] = function()
-  HunterSwissKnife_AutoShotTracker_GunStop();
+HunterSwissKnifeModule_AutoShotTracker_OnEvent["STOP_AUTOREPEAT_SPELL"] = function()
+  GunStop();
 end
 
-HunterSwissKnife_AutoShotTracker_OnEvent["ITEM_LOCK_CHANGED"] = function()
+HunterSwissKnifeModule_AutoShotTracker_OnEvent["ITEM_LOCK_CHANGED"] = function()
     if (shooting == true) then
-        local gCooldownStart, gCooldownTime = HunterSwissKnife_AutoShotTracker_CheckGCD();
+        local gCooldownStart, gCooldownTime = CheckGCD();
 
         if (aimedShotStart ~= false) then
             AutoShotTrackerFrame:SetAlpha(1);
-            HunterSwissKnife_AutoShotTracker_AimingStart();
+            AimingStart();
         elseif (gCooldownTime ~= 1.5) then
-            HunterSwissKnife_AutoShotTracker_GunReload();
+            GunReload();
         elseif (gCooldownStartOld == gCooldownStart) then
-            HunterSwissKnife_AutoShotTracker_GunReload();
+            GunReload();
         else
             gCooldownStartOld = gCooldownStart;
         end

@@ -2,18 +2,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
 
-    <Script file="HunterSwissKnife.lua" />
-    <Script file="HunterSwissKnife_Config.lua" />
+    <Include file="UI\HunterSwissKnifeUI.xml"/>
+    <Include file="Menu\HunterSwissKnifeMenu.xml"/>
+    <Include file="Core\HunterSwissKnifeCore.xml"/>
     
-    <Script file="HunterSwissKnife_Core.lua" />
-    <Script file="HunterSwissKnife_Core_Config.lua" />
-    
-    <Script file="HunterSwissKnife_Module_AntiDaze.lua" />
-    <Script file="HunterSwissKnife_Module_PermanentAspects.lua" />
-    <Script file="HunterSwissKnife_Module_AutoShotTracker.lua"/>
-    
+    <Include file="Modules\AntiDaze\HunterSwissKnifeModule_AntiDaze.xml"/>
+	<Include file="Modules\AutoShotTracker\HunterSwissKnifeModule_AutoShotTracker.xml"/>
+	<Include file="Modules\PermanentAspects\HunterSwissKnifeModule_PermanentAspects.xml"/>
 
-	<Frame name="HunterSwissKnifeFrame">
+    <Script file="HunterSwissKnife.lua"/>
+    <Script file="HunterSwissKnife_Config.lua"/>    
+
+    <Frame name="HunterSwissKnifeFrame">
         <Scripts>
             <OnLoad>HunterSwissKnife_OnLoad();</OnLoad>
             <OnEvent>HunterSwissKnife_OnEvent();</OnEvent>

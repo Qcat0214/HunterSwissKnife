@@ -1,0 +1,112 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+
+    <Script file="HunterSwissKnifeMenu.lua"/>
+
+    <Frame name="HunterSwissKnifeMenu" inherits="HunterSwissKnifeUIWindow">
+        <Frames>
+            <CheckButton name="$parentPermanentAspects"
+                         inherits="OptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="25" y="-35"/>
+                    </Anchor>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>getglobal(this:GetName() .. "Text"):SetText("Permanent Aspects");</OnLoad>
+                    <OnClick>HunterSwissKnifeMenu_CheckButton_OnClick();</OnClick>
+                </Scripts>
+            </CheckButton>
+
+            <CheckButton name="$parentAntiDaze"
+                         inherits="OptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parentPermanentAspects" relativePoint="BOTTOM"/>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>getglobal(this:GetName() .. "Text"):SetText("Antidaze");</OnLoad>
+                    <OnClick>HunterSwissKnifeMenu_CheckButton_OnClick();</OnClick>
+                </Scripts>
+            </CheckButton>
+
+            <CheckButton name="$parentAimedTracker"
+                         inherits="OptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parentAntiDaze" relativePoint="BOTTOM"/>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>getglobal(this:GetName() .. "Text"):SetText("Aimed Tracker");</OnLoad>
+                    <OnClick>HunterSwissKnifeMenu_CheckButton_OnClick();</OnClick>
+                </Scripts>
+            </CheckButton>
+
+
+            <CheckButton name="$parentAutoShotTracker"
+                         inherits="OptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentPermanentAspects" relativePoint="TOPRIGHT">
+                    	<Offset x="120" y="0"/>
+                    </Anchor>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>getglobal(this:GetName() .. "Text"):SetText("AutoShot Tracker");</OnLoad>
+                    <OnClick>HunterSwissKnifeMenu_CheckButton_OnClick();</OnClick>
+                </Scripts>
+            </CheckButton>
+
+            <CheckButton name="$parentPermanentAutoShot"
+                         inherits="OptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parentAutoShotTracker" relativePoint="BOTTOM"/>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>getglobal(this:GetName() .. "Text"):SetText("Permanent AutoShot");</OnLoad>
+                    <OnClick>HunterSwissKnifeMenu_CheckButton_OnClick();</OnClick>
+                </Scripts>
+            </CheckButton>
+
+            <CheckButton name="$parentMultifunctionalCallPet"
+                         inherits="OptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parentPermanentAutoShot" relativePoint="BOTTOM"/>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>getglobal(this:GetName() .. "Text"):SetText("Multifunctional CallPet");</OnLoad>
+                    <OnClick>HunterSwissKnifeMenu_CheckButton_OnClick();</OnClick>
+                </Scripts>
+            </CheckButton>
+
+
+			<Button name="$parentDefault" inherits="OptionsButtonTemplate" text="Default">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT">
+                        <Offset x="10" y="11"/>
+                    </Anchor>
+                </Anchors>
+                
+                <Scripts>
+                    <OnClick>HunterSwissKnifeMenu_Default_OnClick();</OnClick>
+                </Scripts>
+            </Button>
+
+            <Button name="$parentSave" inherits="OptionsButtonTemplate" text="Save">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset x="-10" y="11"/>
+                    </Anchor>
+                </Anchors>
+                
+                <Scripts>
+                    <OnClick>HunterSwissKnifeMenu_Save_OnClick();</OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+</Ui>

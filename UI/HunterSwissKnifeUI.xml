@@ -1,0 +1,69 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+
+    <Frame name="HunterSwissKnifeUIWindow" virtual="true">
+        <Size x="360" y="180"/>
+        
+        <Anchors>
+            <Anchor point="CENTER">
+                <Offset x="0" y="0"/>
+            </Anchor>
+        </Anchors>
+
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background"
+                  edgeFile="Interface\DialogFrame\UI-DialogBox-Border" 
+                  tile="true">
+            <TileSize val="32"></TileSize>
+            <EdgeSize val="32"></EdgeSize>
+            
+            <BackgroundInsets left="11" right="12" top="12" bottom="11"/>
+            
+            <Color       r="0"   g="0"   b="0"   a="0.7"/>
+            <BorderColor r="0.2" g="0.2" b="0.2" a="1.0"/>
+        </Backdrop>
+
+        <Layers>
+            <Layer level="ARTWORK">
+                <Texture name="$parentHeader" 
+                         file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size x="256" y="64"/>
+
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="HunterSwissKnifeMenu">
+                            <Offset x="0" y="12"/>
+                        </Anchor>
+                    </Anchors>
+
+                    <Color r="0" g="0" b="1" a="0.7"/>
+                    <BorderColor r="1" g="0.2" b="0.2" a="1"/>
+                </Texture>
+                
+                <FontString inherits="GameFontNormal" text="HunterSwissKnife">
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="$parentHeader">
+                            <Offset x="0" y="-13"/>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        
+        <Frames>
+            <Button name="$parentClose" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset x="-4" y="-4"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+        </Frames>
+        
+        <Scripts>
+            <OnLoad>
+                getglobal(this:GetName().."Header"):SetVertexColor(0.2,0.2,0.2,1);
+                this:Hide();
+            </OnLoad>
+        </Scripts>
+    </Frame>
+</Ui>
