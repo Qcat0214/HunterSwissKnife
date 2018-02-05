@@ -8,6 +8,7 @@
     
     <Include file="Modules\AntiDaze\HunterSwissKnifeModule_AntiDaze.xml"/>
 	<Include file="Modules\AutoShotTracker\HunterSwissKnifeModule_AutoShotTracker.xml"/>
+	<Include file="Modules\AimedShotTracker\HunterSwissKnifeModule_AimedShotTracker.xml"/>
 	<Include file="Modules\PermanentAspects\HunterSwissKnifeModule_PermanentAspects.xml"/>
 
     <Script file="HunterSwissKnife.lua"/>

@@ -7,6 +7,7 @@ function HunterSwissKnife_OnLoad()
     SlashCmdList["HUNTERSWISSKNIFE"] = HunterSwissKnife_OnCmd;
 
     HunterSwissKnifeModule_AntiDaze_OnLoad(this);
+    HunterSwissKnifeModule_AimedShotTracker_OnLoad(this);
     HunterSwissKnifeModule_AutoShotTracker_OnLoad(this);
 
     HunterSwissKnifeCore_PrintToChat(HSK_GRE..HSK_TITLE.." "..HSK_VERSION.." is loaded");
@@ -21,6 +22,9 @@ end
 function HunterSwissKnife_OnEvent()
     if HunterSwissKnifeModule_AntiDaze_OnEvent[event] then
         HunterSwissKnifeModule_AntiDaze_OnEvent[event](arg1);
+    end
+    if HunterSwissKnifeModule_AimedShotTracker_OnEvent[event] then
+        HunterSwissKnifeModule_AimedShotTracker_OnEvent[event]();
     end
     if HunterSwissKnifeModule_AutoShotTracker_OnEvent[event] then
         HunterSwissKnifeModule_AutoShotTracker_OnEvent[event]();
@@ -37,8 +41,8 @@ function UseAction(slot, checkFlags, checkSelf)
   actionTooltip:SetAction(slot);
   local spellName = actionTooltipTextLeft1:GetText();
 
-  if HunterSwissKnifeModule_AutoShotTracker_OnAction[spellName] then
-      HunterSwissKnifeModule_AutoShotTracker_OnAction[spellName](slot, checkFlags, checkSelf);
+  if HunterSwissKnifeModule_AimedShotTracker_OnAction[spellName] then
+      HunterSwissKnifeModule_AimedShotTracker_OnAction[spellName](slot, checkFlags, checkSelf);
   end
 
   --ORIGINAL CAST: should not be called if triggered and original action is exclusive
@@ -52,8 +56,8 @@ end
 
 HunterSwissKnife_OriginalCastSpellByName = CastSpellByName;
 function CastSpellByName(spellName)
-  if HunterSwissKnifeModule_AutoShotTracker_OnCastSpellByName[spellName] then
-      HunterSwissKnifeModule_AutoShotTracker_OnCastSpellByName[spellName](spellName);
+  if HunterSwissKnifeModule_AimedShotTracker_OnCastSpellByName[spellName] then
+      HunterSwissKnifeModule_AimedShotTracker_OnCastSpellByName[spellName](spellName);
   end
 
   --ORIGINAL CAST: should not be called if triggered and original action is exclusive
@@ -63,7 +67,7 @@ end
 
 HunterSwissKnife_OriginalCastSpell = CastSpell;
 function CastSpell(spellID, spellTab)
-  HunterSwissKnifeModule_AutoShotTracker_OnCastSpell(spellID, spellTab);
+  HunterSwissKnifeModule_AimedShotTracker_OnCastSpell(spellID, spellTab);
 
   --ORIGINAL CAST: should not be called if triggered and original action is exclusive
   HunterSwissKnife_OriginalCastSpell(spellID, spellTab);
