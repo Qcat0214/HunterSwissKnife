@@ -1,5 +1,5 @@
 function HunterSwissKnife_OnCmd(argument)
-    --HunterSwissKnifeMenu_OnShow();
+    HunterSwissKnifeMenu_OnShow();
 end
 
 
