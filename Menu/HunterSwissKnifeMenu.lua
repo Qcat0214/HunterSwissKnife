@@ -98,6 +98,8 @@ end
 function HunterSwissKnifeMenu_Default_OnClick()
     GlobalVarsSetToDefault();
     CheckBoxSetToGlobalVars();
+
+    HunterSwissKnifeMenu_CheckButton_OnClick();
 end
 
 
