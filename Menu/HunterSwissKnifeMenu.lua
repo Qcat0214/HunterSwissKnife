@@ -1,10 +1,9 @@
-
 local defaultPermanentAspects = true;
 local defaultAntiDaze         = true;
 local defaultAimedTracker     = true;
 local defaultAutoShotTracker  = true;
 local defaultAutoShotOverride = true;
-local defaultCallPetOverrride = true; 
+local defaultCallPetOverrride = true;
 
 permanentAspects = defaultPermanentAspects;
 antiDaze         = defaultAntiDaze;
@@ -12,8 +11,6 @@ aimedTracker     = defaultAimedTracker;
 autoShotTracker  = defaultAutoShotTracker;
 autoShotOverride = defaultAutoShotOverride;
 callPetOverrride = defaultCallPetOverrride;
-
-
 
 
 -- GetChecked returns nil if unchecked, so the wrapper function is necessary
@@ -29,7 +26,7 @@ local function CheckBoxIsChanged()
         aimedTracker     == CheckBoxIsEnabled(HunterSwissKnifeMenuAimedTracker) and
         autoShotTracker  == CheckBoxIsEnabled(HunterSwissKnifeMenuAutoShotTracker) and
         autoShotOverride == CheckBoxIsEnabled(HunterSwissKnifeMenuPermanentAutoShot) and
-        callPetOverrride == CheckBoxIsEnabled(HunterSwissKnifeMenuMultifunctionalCallPet)) 
+        callPetOverrride == CheckBoxIsEnabled(HunterSwissKnifeMenuMultifunctionalCallPet))
     then
         return true;
     else
@@ -74,7 +71,7 @@ end
 
 
 local function CheckBoxSetToGlobalVars()
-    HunterSwissKnifeMenuPermanentAspects:SetChecked(permanentAspects); 
+    HunterSwissKnifeMenuPermanentAspects:SetChecked(permanentAspects);
     HunterSwissKnifeMenuAntiDaze:SetChecked(antiDaze);
     HunterSwissKnifeMenuAimedTracker:SetChecked(aimedTracker);
     HunterSwissKnifeMenuAutoShotTracker:SetChecked(autoShotTracker);
@@ -83,15 +80,13 @@ local function CheckBoxSetToGlobalVars()
 end
 
 
-
-
 function HunterSwissKnifeMenu_CheckButton_OnClick()
     if CheckBoxIsChanged() then
         HunterSwissKnifeMenuSave:Enable();
     else
         HunterSwissKnifeMenuSave:Disable();
     end
-    
+
     if not CheckBoxIsDefault() then
         HunterSwissKnifeMenuDefault:Enable();
     else
@@ -105,16 +100,17 @@ function HunterSwissKnifeMenu_Default_OnClick()
     CheckBoxSetToGlobalVars();
 end
 
+
 function HunterSwissKnifeMenu_Save_OnClick()
     GlobalVarsSetToCheckBox();
-    
+
     HunterSwissKnifeMenu:Hide();
 end
 
 
 function HunterSwissKnifeMenu_OnShow()
    CheckBoxSetToGlobalVars();
-   
+
    HunterSwissKnifeMenu_CheckButton_OnClick();
    HunterSwissKnifeMenu:Show();
 end

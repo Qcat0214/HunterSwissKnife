@@ -2,7 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
 
-    <Script file="HunterSwissKnifeModule_AutoShotTracker.lua"/>
+    <Script file="AutoShotTracker.lua"/>
 
     <Frame name="HunterSwissKnifeModule_AutoShotTracker"
            inherits="UIParent"
@@ -52,7 +52,7 @@
         </Layers>
 
         <Scripts>
-            <OnLoad>CreateBar();</OnLoad>
+            <OnLoad>HunterSwissKnifeModule_AutoShotTracker_CreateBar();</OnLoad>
         </Scripts>
     </Frame>
 </Ui>

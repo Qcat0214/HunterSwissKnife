@@ -1,5 +1,5 @@
 function HunterSwissKnife_OnCmd(argument)
-    -- HunterSwissKnifeMenu_OnShow();
+    --HunterSwissKnifeMenu_OnShow();
 end
 
 
@@ -15,6 +15,7 @@ end
 
 
 function HunterSwissKnife_OnUpdate()
+    HunterSwissKnifeModule_AimedShotTracker_OnUpdate();
     HunterSwissKnifeModule_AutoShotTracker_OnUpdate();
 end
 

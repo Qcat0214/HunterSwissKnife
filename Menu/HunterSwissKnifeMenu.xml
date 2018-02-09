@@ -49,7 +49,7 @@
                          inherits="OptionsCheckButtonTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="$parentPermanentAspects" relativePoint="TOPRIGHT">
-                    	<Offset x="120" y="0"/>
+                        <Offset x="120" y="0"/>
                     </Anchor>
                 </Anchors>
 
@@ -84,13 +84,13 @@
             </CheckButton>
 
 
-			<Button name="$parentDefault" inherits="OptionsButtonTemplate" text="Default">
+            <Button name="$parentDefault" inherits="OptionsButtonTemplate" text="Default">
                 <Anchors>
                     <Anchor point="BOTTOMLEFT">
                         <Offset x="10" y="11"/>
                     </Anchor>
                 </Anchors>
-                
+
                 <Scripts>
                     <OnClick>HunterSwissKnifeMenu_Default_OnClick();</OnClick>
                 </Scripts>
@@ -102,7 +102,7 @@
                         <Offset x="-10" y="11"/>
                     </Anchor>
                 </Anchors>
-                
+
                 <Scripts>
                     <OnClick>HunterSwissKnifeMenu_Save_OnClick();</OnClick>
                 </Scripts>
