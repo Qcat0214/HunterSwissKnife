@@ -8,16 +8,16 @@ local function AimedShotStart()
     local aimedShotTime = 3;
 
     for i = 1, 32 do
-        if UnitBuff("player", i) == "Interface\\Icons\\Ability_Warrior_InnerRage" then
+        if UnitBuff("player", i) == AURA_QUICKSHOTS then
             aimedShotTime = aimedShotTime / 1.3;
         end
-        if UnitBuff("player", i) == "Interface\\Icons\\Ability_Hunter_RunningShot" then
+        if UnitBuff("player", i) == AURA_RAPIDFIRE then
             aimedShotTime = aimedShotTime / 1.4;
         end
-        if UnitBuff("player", i) == "Interface\\Icons\\Racial_Troll_Berserk" then
+        if UnitBuff("player", i) == AURA_TROLL_BERSERK then
             aimedShotTime = aimedShotTime / berserkValue;
         end
-        if UnitBuff("player", i) == "Interface\\Icons\\Inv_Trinket_Naxxramas04" then
+        if UnitBuff("player", i) == AURA_NAXX_HASTTRINKET then
             aimedShotTime = aimedShotTime / 1.2;
         end
     end
@@ -57,7 +57,7 @@ end
 
 local function CheckBerserk()
     for i = 1, 16 do
-        if UnitBuff("player",i) == "Interface\\Icons\\Racial_Troll_Berserk" then
+        if UnitBuff("player",i) == AURA_TROLL_BERSERK then
             if not berserkValue then
                 local healthRatio = UnitHealth("player") / UnitHealthMax("player");
 
