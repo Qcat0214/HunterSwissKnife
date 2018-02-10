@@ -24,7 +24,7 @@ All changes are optional and can be changed in configuration menu `/hsk`
 
 ## Installation
 
-1. Download **[Latest Version](https://github.com/sonitusv/HunterSwissKnife/archive/master.zip)**
+1. Download **[The Latest Version](https://github.com/sonitusv/HunterSwissKnife/archive/master.zip)**
 2. Unpack the Zip file
 3. Rename the folder `HunterSwissKnife-master` to `HunterSwissKnife`
 4. Copy `HunterSwissKnife` into `YOURWOWDIRECTORY\Interface\AddOns`
@@ -33,6 +33,21 @@ All changes are optional and can be changed in configuration menu `/hsk`
 ## Commands
 
 `/hsk` or `/hunterswissknife` - open configuration menu
+
+
+## FAQ
+**How can I report a bug?** 
+Report errors and issues [here](https://github.com/sonitusv/HunterSwissKnife/issues) with `bug` or `issue` label.
+If there is an error message, make sure to have the latest version installed.
+If the error message is still there, please provide the folowing information:
+- Screenshot of the error message (if any)
+- When and where did you get the error
+- What did you do at that time
+
+Or any other information to help reproduce the issue.
+
+**Can I contribute?**
+Report feature requests [here](https://github.com/sonitusv/HunterSwissKnife/issues) with `feature` label.
 
 ## Screenshots
 
