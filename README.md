@@ -1,4 +1,4 @@
-# HunterSwissKnife
+# HunterSwissKnife v1.1
 
 HunterSwissKnife is an addon for World of Warcraft 1.12.1.
 It provides hunters with a set of useful things, such as:
