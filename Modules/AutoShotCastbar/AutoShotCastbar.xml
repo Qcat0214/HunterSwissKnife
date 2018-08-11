@@ -2,17 +2,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
 
-    <Script file="AutoShotTracker.lua"/>
+    <Script file="AutoShotCastbar.lua"/>
 
-    <Frame name="HunterSwissKnifeModule_AutoShotTracker"
+    <Frame name="HSK_MODULE_AUTOSHOTCASTBAR"
            inherits="UIParent"
            frameStrata="HIGH"
            alpha="0">
 
         <Layers>
             <Layer level="OVERLAY">
-                <Texture name="$parentBar"
-                         file="Interface\AddOns\HunterSwissKnife\Modules\AutoShotTracker\Textures\Bar.tga">
+                <Texture name="$parent_BAR"
+                         file="Interface\AddOns\HunterSwissKnife\Modules\AutoShotCastbar\Textures\Bar.tga">
                     <Anchors>
                         <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER"/>
                     </Anchors>
@@ -20,7 +20,7 @@
             </Layer>
 
             <Layer level="ARTWORK">
-                <Texture name="$parentBackground">
+                <Texture name="$parent_BACKDROP">
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
                         <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
@@ -31,7 +31,7 @@
             </Layer>
 
             <Layer level="BORDER">
-                <Texture name="$parentBorderIn">
+                <Texture name="$parent_INNERBORDER">
                     <Anchors>
                         <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER"/>
                     </Anchors>
@@ -41,7 +41,7 @@
             </Layer>
 
             <Layer level="BACKGROUND">
-                <Texture name="$parentBorderOut">
+                <Texture name="$parent_OUTERBORDER">
                     <Anchors>
                         <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER"/>
                     </Anchors>
@@ -52,7 +52,7 @@
         </Layers>
 
         <Scripts>
-            <OnLoad>HunterSwissKnifeModule_AutoShotTracker_CreateBar();</OnLoad>
+            <OnLoad>HSK_Module_AutoShotCastbar_CreateBar();</OnLoad>
         </Scripts>
     </Frame>
 </Ui>

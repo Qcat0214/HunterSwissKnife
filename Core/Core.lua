@@ -1,32 +1,30 @@
-function HunterSwissKnifeCore_PrintToChat(text)
+function HSK_Core_PrintToChat(text)
     DEFAULT_CHAT_FRAME:AddMessage(text);
 end
 
 
-function HunterSwissKnifeCore_IsAuraActive(auraName, unit, trackInBuffs, trackInDebuffs)
-    if not auraName then return end
+function HSK_Core_IsBuffActive(buffIcon, unit)
+    if not buffIcon then return nil end
     if not unit then unit = "player" end
-    if not trackInBuffs then trackInBuffs = true end
-    if not trackInDebuffs then trackInDebuffs = true end
 
-    local it= 0;
+    local it = 0;
     if unit == "player" then
-        while trackInBuffs do
+        while true do
             local buffIndex = GetPlayerBuff(it);
             if buffIndex == -1 then break end
 
-            if string.find(GetPlayerBuffTexture(buffIndex), auraName) then
+            if string.find(GetPlayerBuffTexture(buffIndex), buffIcon) then
                 return it;
             end
 
             it = it + 1;
         end
     else
-        while trackInBuffs do
+        while true do
             local buffTexture = UnitBuff(unit, it+1);
             if not buffTexture then break end
 
-            if string.find(buffTexture, auraName) then
+            if string.find(buffTexture, buffIcon) then
                 return it;
             end
 
@@ -34,33 +32,41 @@ function HunterSwissKnifeCore_IsAuraActive(auraName, unit, trackInBuffs, trackIn
         end
     end
 
-    it= 0;
-    while trackInDebuffs do
+    return nil;
+end
+
+
+function HSK_Core_IsDebuffActive(debuffIcon, unit)
+    if not debuffIcon then return nil end
+    if not unit then unit = "player" end
+
+    local it = 0;
+    while true do
         local debuffTexture = UnitDebuff(unit, it+1);
         if not debuffTexture then break end
 
-        if string.find(debuffTexture, auraName) then
+        if string.find(debuffTexture, debuffIcon) then
             return it;
         end
 
         it = it + 1;
     end
 
-    return;
+    return nil;
 end
 
 
-function HunterSwissKnifeCore_CancelAura(auraName)
-    local auraIndex = HunterSwissKnifeCore_IsAuraActive(auraName, "player", true, false);
-    if auraIndex then
-        CancelPlayerBuff(auraIndex);
+function HSK_Core_CancelBuff(buffIcon)
+    local buffIndex = HSK_Core_IsBuffActive(buffIcon, "player");
+    if buffIndex then
+        CancelPlayerBuff(buffIndex);
     end
 end
 
 
-function HunterSwissKnifeCore_isDazed(unit)
+function HSK_Core_isDazed(unit)
     if not ((IsMounted) and UnitIsMounted("player")) then
-        if HunterSwissKnifeCore_IsAuraActive(AURA_DAZED, unit, false, true) then
+        if HSK_Core_IsDebuffActive(HSK_AURA_DAZED_ICON, unit) then
             return true;
         end
     end
@@ -69,22 +75,22 @@ function HunterSwissKnifeCore_isDazed(unit)
 end
 
 
-function HunterSwissKnifeCore_HasPet()
+function HSK_Core_HasPet()
     local hasUI, isHunterPet = HasPetUI();
     if hasUI and isHunterPet then
         return true;
-    else
-        return false;
     end
+
+    return false;
 end
 
 
-function HunterSwissKnifeCore_GetSpellNameById(spellId)
-    return GetSpellName(spellId,"BOOKTYPE_SPELL");
+function HSK_Core_GetSpellNameById(spellId)
+    return GetSpellName(spellId, "BOOKTYPE_SPELL");
 end
 
 
-function HunterSwissKnifeCore_GetSpellIdByName(spellName, spellPage)
+function HSK_Core_GetSpellIdByName(spellName, spellPage)
     local whatPage = spellPage;
     if not spellPage then whatPage = GetNumSpellTabs() end
 
@@ -97,4 +103,6 @@ function HunterSwissKnifeCore_GetSpellIdByName(spellName, spellPage)
             return spellId;
         end
     end
+
+    return nil;
 end
