@@ -2,20 +2,20 @@
 
 HunterSwissKnife is an addon for World of Warcraft 1.12.1.
 It provides hunters with a set of useful things, such as:
-- **Permanent Aspects**
+- **Aspects override**
   - The aspects are not canceled when double pressed.
 - **Antidaze**
   - `Aspect of the Cheetah` is canceled if the player is dazed.
   - `Aspect of the Pack` is canceled if the player or party/raid members are dazed.
-- **Aimed Tracker**
+- **Aimed Shot castbar**
   - Shows a castbar for `Aimed Shot`.
-- **AutoShot Tracker**
+- **Auto Shot castbar**
   - Shows a castbar for `Auto Shot`. It is split into two phases: aiming (yellow) and reloading (red).
-- **Permanent AutoShot**
+- **Auto Shot override**
   - `Auto Shot` is not canceled when double pressed.
   - `Auto Shot` starts attacking with a ranged weapon if used in ranged distance.
   - `Auto Shot` starts attacking with a melee weapon if used in melee distance.
-- **Multifunctional CallPet**
+- **Call Pet override**
   - `Call Pet` calls a pet if the pet is not summoned.
   - `Call Pet` commands the pet to attack the player's target if the player's and pet's targets are different.
   - `Call Pet` commnads the pet to follow the player if the player's and pet's targets are the same.
